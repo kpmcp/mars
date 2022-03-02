@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Works log</h2>
+{%for item in jobs%}
+    <h3>Action # {{item.id}}</h3>
+    <table width="900px">
+        <tr class="alert alert-secondary">
+            <td>Title of activity</td>
+            <td>Team leader</td>
+            <td align="center">Duration</td>
+            <td align="center">list of collaborators</td>
+            <td align="center">Is finished</td>
+        </tr>
+        <tr class="alert alert-primary">
+            <td>{{item.job}}</td>
+            <td>{{item.user.surname}} {{item.user.name}}</td>
+            <td align="center">{{item.work_size}} hours</td>
+            <td align="center">{{item.collaborators}}</td>
+            <td align="center" class="alert alert-warning">{% if item.is_finished == 1 %} is finished {%else%} is not </br>finished  {% endif %}</td>
+        </tr>
+    </table>
+{% endfor %}
+
+{% endblock %}
